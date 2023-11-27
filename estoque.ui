@@ -60,11 +60,6 @@
     </column>
     <column>
      <property name="text">
-      <string>CÓDIGO</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
       <string>PRODUTO</string>
      </property>
     </column>

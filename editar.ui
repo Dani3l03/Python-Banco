@@ -43,25 +43,7 @@ background-color: rgb(17, 164, 255);
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 255, 255);</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
+      <x>50</x>
       <y>120</y>
       <width>91</width>
       <height>31</height>
@@ -79,7 +61,7 @@ background-color: rgb(17, 164, 255);
    <widget class="QLineEdit" name="lineEdit_3">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>140</x>
       <y>120</y>
       <width>121</width>
       <height>31</height>
@@ -97,7 +79,7 @@ background-color: rgb(17, 164, 255);
    <widget class="QLineEdit" name="lineEdit_4">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>260</x>
       <y>120</y>
       <width>121</width>
       <height>31</height>
@@ -115,7 +97,7 @@ background-color: rgb(17, 164, 255);
    <widget class="QLineEdit" name="lineEdit_5">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>380</x>
       <y>120</y>
       <width>121</width>
       <height>31</height>
@@ -133,8 +115,8 @@ background-color: rgb(17, 164, 255);
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>60</y>
+      <x>30</x>
+      <y>80</y>
       <width>531</width>
       <height>31</height>
      </rect>
@@ -145,7 +127,7 @@ background-color: rgb(17, 164, 255);
      </font>
     </property>
     <property name="text">
-     <string>           ID              CÓDIGO             PRODUTO                 PREÇO                 CATEGORIA</string>
+     <string>           ID                    PRODUTO                 PREÇO                 FORNECEDOR</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">

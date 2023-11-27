@@ -16,7 +16,7 @@ if resultado:
   print("A tabela já existe.")
 else:
   print("A tabela não existe.")
-  cursor.execute("CREATE TABLE produtos(id INT AUTO_INCREMENT PRIMARY KEY, codigo INT ,produto VARCHAR(255), fornecedor VARCHAR(255), preco INT)")
+  cursor.execute("CREATE TABLE produtos(id INT AUTO_INCREMENT PRIMARY KEY ,produto VARCHAR(255), fornecedor VARCHAR(255), preco INT)")
   print('Tabela criada!')
 
 #função principal que preenche os dados que são colocados pelo usuário nos respectivos espaços e guarda no banco de dados
@@ -24,25 +24,20 @@ def funcao_principal():
     produto = interface.lineEdit.text()
     fornecedor = interface.lineEdit_2.text()
     preco = interface.lineEdit_3.text()
-    codigo = interface.lineEdit_4.text()
 
     cursor = conexao.cursor()
 
-    if interface.radioButton.isChecked() :
         # criar dados na tabela
-        sql = "INSERT INTO produtos(codigo, produto, fornecedor, preco) VALUES (%s ,%s, %s, %s)"
-        dados =(codigo ,produto, fornecedor, preco)
-        cursor.execute(sql, dados)
-        conexao.commit()
-
-    else:
-      print("escolha uma das opções!")
+    sql = "INSERT INTO produtos (produto, fornecedor, preco) VALUES (%s ,%s, %s)"
+    dados =(produto, fornecedor, preco)
+    cursor.execute(sql, dados)
+    conexao.commit()
 
       # mostrando o que o usuário colocou   
-      print("Codigo:",codigo)
-      print("Produto:",produto)
-      print("Fornecedor", fornecedor)
-      print("Preço",preco)
+
+    print("Produto:",produto)
+    print("Fornecedor", fornecedor)
+    print("Preço",preco)
 
 
 def editar():    
@@ -59,23 +54,24 @@ def editar():
     tela_editar.show()
 
     tela_editar.lineEdit.setText(str(produto[0][0]))
-    tela_editar.lineEdit_2.setText(str(produto[0][1]))
-    tela_editar.lineEdit_3.setText(str(produto[0][2]))
+    tela_editar.lineEdit_3.setText(str(produto[0][1]))
+    tela_editar.lineEdit_5.setText(str(produto[0][2]))
     tela_editar.lineEdit_4.setText(str(produto[0][3]))
-    tela_editar.lineEdit_5.setText(str(produto[0][4]))
+    
     numero_id = valor_id
     conexao.commit()
 
 
 def salvar():
       global numero_id
-      codigo = tela_editar.lineEdit_2.text()
-      descricao = tela_editar.lineEdit_3.text()
+      produto = tela_editar.lineEdit_3.text()
+      fornecedor = tela_editar.lineEdit_5.text()
       preco = tela_editar.lineEdit_4.text()
-      categoria = tela_editar.lineEdit_5.text()
+      numero_id = tela_editar.lineEdit.text()
+      
       # atualizar os dados no banco
       cursor = conexao.cursor()
-      cursor.execute("UPDATE produtos SET codigo = '{}', descricao = '{}', preco = '{}', categoria ='{}' WHERE id = {}".format(codigo,descricao,preco,categoria,numero_id))
+      cursor.execute("UPDATE produtos SET produto = '{}', fornecedor = '{}', preco ='{}' WHERE id = {}".format(produto,fornecedor,preco,numero_id))
       conexao.commit()
       #atualizar as janelas
       tela_editar.close()
@@ -109,11 +105,11 @@ resultado = cursor.fetchall()
 
 # colocando o número de linhas e Colunas da tabela do Qtdesigner (define o tamanho da tabela)
 estoque.tableWidget.setRowCount(len(resultado))
-estoque.tableWidget.setColumnCount(5)
+estoque.tableWidget.setColumnCount(4)
 
 # dois for para posicionar os items de maneira certa e criar uma tabela organzada na aba do Qtdesigner
 for i in range(0, len(resultado)):
-               for j in range(0, 5):
+               for j in range(0, 4):
                   estoque.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(resultado[i][j])))
 
 # chama as telas do Qt designer
