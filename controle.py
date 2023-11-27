@@ -86,6 +86,7 @@ def deletar():
     dados_lidos = cursor.fetchall()
     valor_id = dados_lidos[linha][0]
     cursor.execute("DELETE FROM produtos WHERE id="+ str(valor_id))
+    conexao.commit()
     
 
 #declarando as tels=as do Qtdesigner como variáveis para chamar mais tarde
@@ -102,6 +103,7 @@ cursor = conexao.cursor()
 comando = "SELECT * FROM produtos"
 cursor.execute(comando)
 resultado = cursor.fetchall()
+conexao.commit()
 
 # colocando o número de linhas e Colunas da tabela do Qtdesigner (define o tamanho da tabela)
 estoque.tableWidget.setRowCount(len(resultado))
