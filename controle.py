@@ -24,7 +24,6 @@ def funcao_principal():
     produto = interface.lineEdit.text()
     fornecedor = interface.lineEdit_2.text()
     preco = interface.lineEdit_3.text()
-    codigo = interface.lineEdit_4.text()
 
     cursor = conexao.cursor()
 
@@ -69,13 +68,13 @@ def editar():
 
 def salvar():
       global numero_id
-      codigo = tela_editar.lineEdit_2.text()
-      descricao = tela_editar.lineEdit_3.text()
-      preco = tela_editar.lineEdit_4.text()
-      categoria = tela_editar.lineEdit_5.text()
+      
+      produto = tela_editar.lineEdit.text()
+      preco = tela_editar.lineEdit_3.text()
+      formecedor = tela_editar.lineEdit_2.text()
       # atualizar os dados no banco
       cursor = conexao.cursor()
-      cursor.execute("UPDATE produtos SET codigo = '{}', descricao = '{}', preco = '{}', categoria ='{}' WHERE id = {}".format(codigo,descricao,preco,categoria,numero_id))
+      cursor.execute("UPDATE produtos SET produto = '{}', preco = '{}', fornecedor ='{}' WHERE id = {}".format(produto,preco,fornecedor,numero_id))
       conexao.commit()
       #atualizar as janelas
       tela_editar.close()
@@ -109,11 +108,11 @@ resultado = cursor.fetchall()
 
 # colocando o número de linhas e Colunas da tabela do Qtdesigner (define o tamanho da tabela)
 estoque.tableWidget.setRowCount(len(resultado))
-estoque.tableWidget.setColumnCount(5)
+estoque.tableWidget.setColumnCount(4)
 
 # dois for para posicionar os items de maneira certa e criar uma tabela organzada na aba do Qtdesigner
 for i in range(0, len(resultado)):
-               for j in range(0, 5):
+               for j in range(0, 4):
                   estoque.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(resultado[i][j])))
 
 # chama as telas do Qt designer
