@@ -21,7 +21,7 @@ else:
 
 # criação da tabela
 
-cursor.execute("CREATE TABLE produtos(id INT AUTO_INCREMENT PRIMARY KEY, codigo INT ,produto VARCHAR(255), fornecedor VARCHAR(255), preco INT)")
+cursor.execute("CREATE TABLE produtos(id INT AUTO_INCREMENT PRIMARY KEY,produto VARCHAR(255), fornecedor VARCHAR(255), preco INT)")
 
 # criação de dados
 

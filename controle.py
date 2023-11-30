@@ -7,20 +7,20 @@ conexao = mysql.connector.connect(
         password="1234",
         database="bancodedados"
     )
-#criando a tabela produtos se o banco não tiver ela:
+# criando a tabela produtos se o banco não tiver ela:
 cursor = conexao.cursor()
 cursor.execute("SHOW TABLES LIKE 'produtos'")
 resultado = cursor.fetchone()
 
-if resultado: 
+if resultado:
   print("A tabela já existe.")
 else:
   print("A tabela não existe.")
   cursor.execute("CREATE TABLE produtos(id INT AUTO_INCREMENT PRIMARY KEY ,produto VARCHAR(255), fornecedor VARCHAR(255), preco INT)")
   print('Tabela criada!')
 
-#função principal que preenche os dados que são colocados pelo usuário nos respectivos espaços e guarda no banco de dados
-def funcao_principal():
+# função principal que preenche os dados que são colocados pelo usuário nos respectivos espaços e guarda no banco de dados
+def adicionar():
     produto = interface.lineEdit.text()
     fornecedor = interface.lineEdit_2.text()
     preco = interface.lineEdit_3.text()
@@ -76,6 +76,7 @@ def salvar():
       #atualizar as janelas
       tela_editar.close()
       estoque.close()
+      consultar_estoque()
 
 def deletar():
     linha = estoque.tableWidget.currentRow()
@@ -89,7 +90,7 @@ def deletar():
     conexao.commit()
     
 
-#declarando as tels=as do Qtdesigner como variáveis para chamar mais tarde
+# declarando as telas do Qtdesigner como variáveis para chamar mais tarde
 app=QtWidgets.QApplication([])
 interface=uic.loadUi("interface.ui")
 estoque=uic.loadUi("estoque.ui")
@@ -115,7 +116,7 @@ for i in range(0, len(resultado)):
                   estoque.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(resultado[i][j])))
 
 # chama as telas do Qt designer
-interface.pushButton.clicked.connect(funcao_principal)
+interface.pushButton.clicked.connect(adicionar)
 interface.pushButton_2.clicked.connect(consultar_estoque)
 estoque.pushButton_3.clicked.connect(deletar)
 estoque.pushButton_2.clicked.connect(editar)
